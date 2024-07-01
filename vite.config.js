@@ -15,7 +15,7 @@ export default defineConfig({
     ImageMinifierPlugin([
       {
         inputPath: './src/assets/images',
-        outputPath: './dist/assets/images',
+        outputPath: './dist/deli-website/assets/images',
         recursive: true,
         options: {
           width: 512
@@ -23,7 +23,7 @@ export default defineConfig({
       },
       {
         inputPath: './src/' + jumbotron,
-        outputPath: './dist/assets/images/jumbotron.png',
+        outputPath: './dist/deli-website/assets/images/jumbotron.png',
         options: {
           width: 1920
         }
@@ -35,5 +35,10 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '~': fileURLToPath(new URL('./', import.meta.url))
     }
+  },
+  build: {
+    outDir: './dist/deli-website',
+    emptyOutDir: true,
   }
+
 })

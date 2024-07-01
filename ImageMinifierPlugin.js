@@ -14,7 +14,7 @@ export default function ImageMinifierPlugin(configArr = []) {
             for (let config of configArr) {
                 const {
                     inputPath = './src/assets/images',
-                    outputPath = './dist/assets/images',
+                    outputPath = './dist/deli-website/assets/images',
                     test = /.*\.(gif|png|jpg|jpeg)$/i,
                     recursive = false,
                     options = {}
