@@ -1,85 +1,59 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import NavBar from './components/NavBar.vue'
+import layout from '~/layout.json'
+
+layout.jumbotron =
+  import.meta.env.MODE === 'production' ? '/assets/images/jumbotron.png' : 'src/' + layout.jumbotron
+layout.categories = layout.categories.map((cat) => {
+  cat.previewSrc = (import.meta.env.MODE === 'production' ? '' : 'src/') + cat.previewSrc
+  return cat
+})
+
+console.log(layout)
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <NavBar />
+  <main class="content-wrapper">
+    <RouterView v-slot="{ Component }">
+      <Transition name="page-slide" mode="out-in" appear>
+        <component :is="Component" :layout="layout" />
+      </Transition>
+    </RouterView>
+  </main>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<style>
+html,
+body {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Baskervville', serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.app-root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.content-wrapper {
+  height: 100vh;
+  overflow: auto;
+  padding: 0 16px 16px 16px;
 }
 
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.page-slide-enter-active,
+.page-slide-leave-active {
+  transition: 400ms ease all;
 }
 
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
+.page-slide-enter-from,
+.page-slide-leave-to {
+  opacity: 0;
+  transform: translateY(60px);
 }
 </style>

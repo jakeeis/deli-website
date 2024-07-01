@@ -1,0 +1,30 @@
+{
+  "jumbotron": "assets/images/house.png",
+  "categories": [
+    {
+      "title": "Portraits",
+      "url": "Portraits",
+      "previewSrc": "assets/images/miko.PNG"
+    },
+    {
+      "title": "Portraits 2",
+      "url": "Portraits2",
+      "previewSrc": "assets/images/miko.PNG"
+    },
+    {
+      "title": "Portraits 3",
+      "url": "Portraits3",
+      "previewSrc": "assets/images/miko.PNG"
+    },
+    {
+      "title": "Portraits 4",
+      "url": "Portraits4",
+      "previewSrc": "assets/images/miko.PNG"
+    },
+    {
+      "title": "Portraits 5",
+      "url": "Portraits5",
+      "previewSrc": "assets/images/miko.PNG"
+    }
+  ]
+}
