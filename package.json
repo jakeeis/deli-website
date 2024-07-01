@@ -1,4 +1,5 @@
 {
+  "homepage": "https://jakeeis.github.io/deli-website/",
   "name": "deli-website",
   "version": "0.0.0",
   "private": true,
@@ -6,6 +7,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "preview": "vite preview",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
@@ -21,6 +24,7 @@
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.23.0",
     "express": "^4.19.2",
+    "gh-pages": "^6.1.1",
     "prettier": "^3.2.5",
     "sass": "^1.77.6",
     "sharp": "^0.33.4",
